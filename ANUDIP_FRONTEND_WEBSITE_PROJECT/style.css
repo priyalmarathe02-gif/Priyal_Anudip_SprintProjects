@@ -1,0 +1,376 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+
+:root {
+    --primary: #38bdf8;
+    --primary-dark: #0ea5e9;
+    --accent: #fbbf24;
+    --bg-deep: #0b1120;
+    --bg-card: rgba(30, 41, 59, 0.7);
+    --bg-glass: rgba(15, 23, 42, 0.6);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --success: #10b981;
+    --danger: #f43f5e;
+    --border: rgba(255, 255, 255, 0.1);
+    --shadow-premium: 0 20px 50px rgba(0, 0, 0, 0.5);
+    --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(rgba(11, 17, 32, 0.65), rgba(11, 17, 32, 0.85)), url('hero-bg.png') no-repeat center center fixed;
+    background-size: cover;
+    color: var(--text-main);
+    font-family: 'Outfit', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
+/* ===== NAVIGATION ===== */
+.navbar-premium {
+    background: var(--bg-glass);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border);
+    padding: 1.2rem 0;
+    transition: var(--transition);
+}
+
+.navbar-brand {
+    font-weight: 800;
+    font-size: 2rem !important;
+    background: linear-gradient(to right, var(--text-main), var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.navbar-brand i {
+    font-size: 1.8rem;
+    color: var(--primary);
+    -webkit-text-fill-color: var(--primary);
+}
+
+.hero-section {
+    position: relative;
+    height: 60vh;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+}
+
+/* Removed gradient background since it's on body now */
+.hero-section::before {
+    display: none;
+}
+
+.hero-title {
+    position: relative;
+    font-weight: 800;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    margin-bottom: 1rem;
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero-subtitle {
+    position: relative;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    animation: fadeInUp 1s ease-out 0.2s backwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== CONTENT LAYOUT ===== */
+.content-section {
+    margin-top: -100px;
+    position: relative;
+    z-index: 10;
+}
+
+/* ===== PREMIUM CARDS ===== */
+.card-premium {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    overflow: hidden;
+    transition: var(--transition);
+    height: 100%;
+}
+
+.card-premium:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: var(--primary);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+.card-header-custom {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.card-header-custom i {
+    font-size: 1.8rem;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.card-header-custom h5 {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--text-main);
+    margin: 0;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+/* Forms */
+.form-label {
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.form-control {
+    background: rgba(15, 23, 42, 0.5) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 12px !important;
+    color: var(--text-main) !important;
+    padding: 12px 16px !important;
+    transition: var(--transition) !important;
+}
+
+.form-control:focus {
+    background: rgba(15, 23, 42, 0.8) !important;
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.1) !important;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+/* Buttons */
+.btn {
+    border-radius: 14px !important;
+    padding: 14px 28px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition) !important;
+    border: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-add {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+    color: white !important;
+}
+
+.btn-book {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%) !important;
+    color: white !important;
+}
+
+.btn-cancel {
+    background: rgba(244, 63, 94, 0.1) !important;
+    border: 1px solid var(--danger) !important;
+    color: var(--danger) !important;
+}
+
+.btn-cancel:hover {
+    background: var(--danger) !important;
+    color: white !important;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* ===== DATA TABLES ===== */
+.card-table {
+    background: var(--bg-card);
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    margin-bottom: 3rem;
+}
+
+.card-header-table {
+    padding: 2rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header-table h5 {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--text-main);
+}
+
+.table-premium {
+    color: var(--text-main) !important;
+}
+
+.table-premium thead th {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border-bottom: 1px solid var(--border) !important;
+    color: var(--text-muted) !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 1px !important;
+    padding: 20px !important;
+}
+
+.table-premium tbody td {
+    padding: 20px !important;
+    border-bottom: 1px solid var(--border) !important;
+    color: var(--text-main) !important;
+    font-weight: 400 !important;
+    background: transparent !important;
+}
+
+.table-premium tbody tr:hover {
+    background: rgba(255, 255, 255, 0.03) !important;
+}
+
+.empty-state {
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+.empty-state i {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 1rem;
+    opacity: 0.3;
+}
+
+/* Flight Board Accent */
+#flightTable tr:hover {
+    cursor: default;
+}
+
+#flightTable tr td:first-child {
+    font-family: monospace;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* Notifications */
+.notification {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 20px 30px;
+    border-radius: 16px;
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-premium);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.notification-success {
+    border-left: 5px solid var(--success);
+}
+
+.notification-error {
+    border-left: 5px solid var(--danger);
+}
+
+.notification-info {
+    border-left: 5px solid var(--primary);
+}
+
+/* Footer */
+.footer-premium {
+    background: var(--bg-glass);
+    border-top: 1px solid var(--border);
+    padding: 3rem 0;
+    margin-top: 4rem;
+}
+
+.footer-premium p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .content-section {
+        margin-top: -50px;
+    }
+}

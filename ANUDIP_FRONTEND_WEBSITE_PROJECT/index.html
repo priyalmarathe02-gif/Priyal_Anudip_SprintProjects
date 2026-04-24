@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyBook Premium - Elite Flight Management</title>
+    <!-- Modern Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <meta name="description"
+        content="Elite flight management system for international airline operations. Manage flights, bookings, and operations with precision.">
+</head>
+
+<body>
+
+    <!-- PREMIUM NAVIGATION -->
+    <nav class="navbar navbar-dark navbar-premium sticky-top">
+        <div class="container">
+            <div class="navbar-brand">
+                SKYBOOK<span>ELITE</span>
+            </div>
+            <div class="d-flex align-items-center">
+                <i class="fas fa-paper-plane"></i>
+            </div>
+        </div>
+        </div>
+    </nav>
+
+    <!-- CINEMATIC HERO SECTION -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <h1 class="hero-title">Redefining Global Aviation</h1>
+            <p style="color: white;">Industry's most advanced flight management and booking console.
+                <br>Experience precision at 35,000 feet.
+            </p>
+        </div>
+    </section>
+
+    <!-- CONTENT DECK -->
+    <div class="container content-section">
+
+        <!-- OPERATIONAL CONSOLE (MANAGEMENT CARDS) -->
+        <div class="row g-4 mb-5">
+            <!-- ADD FLIGHT -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card card-premium">
+                    <div class="card-header-custom">
+                        <i class="fas fa-plus-square"></i>
+                        <h5>Initialize Flight</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label">Flight Designation</label>
+                            <input id="name" class="form-control" placeholder="e.g. SKY-747">
+                        </div>
+                        <div class="row g-3 mb-3">
+                            <div class="col-6">
+                                <label class="form-label">Origin</label>
+                                <input id="source" class="form-control" placeholder="LHR">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">Destination</label>
+                                <input id="dest" class="form-control" placeholder="JFK">
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Capacity (Pax)</label>
+                            <input id="seats" type="number" class="form-control" placeholder="300">
+                        </div>
+                        <button class="btn btn-add w-100">
+                            Deploy Flight <i class="fas fa-check"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOOK TICKET -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card card-premium">
+                    <div class="card-header-custom">
+                        <i class="fas fa-ticket-alt"></i>
+                        <h5>Passenger Booking</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label">Flight ID</label>
+                            <input id="flightId" type="number" class="form-control" placeholder="Enter ID">
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Full Name</label>
+                            <input id="passenger" class="form-control" placeholder="Manifest Name">
+                        </div>
+                        <button class="btn btn-book w-100">
+                            Confirm Manifest <i class="fas fa-plane-departure"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CANCEL BOOKING -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card card-premium">
+                    <div class="card-header-custom">
+                        <i class="fas fa-ban"></i>
+                        <h5>Cancellation Hub</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-4">
+                            <label class="form-label">Reference ID</label>
+                            <input id="bookingId" type="number" class="form-control" placeholder="Booking Ref">
+                        </div>
+                        <button class="btn btn-cancel w-100">
+                            Revoke Ticket <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LIVE FLIGHT BOARD -->
+        <div class="card card-premium card-table mb-5">
+            <div class="card-header-table">
+                <h5><i class="fas fa-broadcast-tower me-3"></i>Global Departure Board</h5>
+                <button class="btn btn-sm btn-outline-danger" id="clearAllBtn">
+                    Purge System Cache <i class="fas fa-trash-alt ms-2"></i>
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="mb-4">
+                    <div class="input-group">
+                        <span class="input-group-text bg-transparent border-0 text-muted"><i
+                                class="fas fa-search"></i></span>
+                        <input type="text" id="flightSearch" class="form-control border-0 bg-transparent fs-5"
+                            placeholder="Filter departures by flight code or city...">
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-premium mb-0">
+                        <thead>
+                            <tr>
+                                <th>FLIGHT ID</th>
+                                <th>DESIGNATION</th>
+                                <th>ROUTE (ORIGIN → DEST)</th>
+                                <th>AVAILABILITY</th>
+                                <th>OPERATIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="flightTable"></tbody>
+                    </table>
+                    <div id="emptyFlightState" class="empty-state">
+                        <i class="fas fa-radar"></i>
+                        <p>No active flight signals detected in the airspace.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MANIFEST HISTORY -->
+        <div class="card card-premium card-table">
+            <div class="card-header-table">
+                <h5><i class="fas fa-history me-3"></i>Global Booking Manifest</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-premium mb-0">
+                        <thead>
+                            <tr>
+                                <th>REFERENCE ID</th>
+                                <th>PASSENGER</th>
+                                <th>FLIGHT ID</th>
+                                <th>DESIGNATION</th>
+                                <th>ROUTE</th>
+                                <th>TIMESTAMP</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bookingTable"></tbody>
+                    </table>
+                    <div id="emptyBookingState" class="empty-state">
+                        <i class="fas fa-fingerprint"></i>
+                        <p>No bookings processed for this operating period.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- PREMIUM FOOTER -->
+    <footer class="footer-premium">
+        <div class="container text-center">
+            <div class="mb-3">
+                <i class="fas fa-paper-plane fa-2x text-primary mb-3"></i>
+                <p class="mb-0"><strong>SKYBOOK ELITE OPERATIONS</strong></p>
+                <p style="color: white;">© 2026 International Aviation Systems Group. Authorized Personnel Only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS Logic Preservation -->
+    <script src="script.js"></script>
+</body>
+
+</html>
