@@ -25,7 +25,7 @@ It focuses on UI design, layout structuring, and basic interaction flow.
 
 ---
 
-## 🖼️ Frontend Screenshots
+## Frontend Screenshots
 
 ![Frontend 1](ANUDIP_FRONTEND_WEBSITE_PROJECT/screenshots/1.png)  
 ![Frontend 2](ANUDIP_FRONTEND_WEBSITE_PROJECT/screenshots/2.png)  
